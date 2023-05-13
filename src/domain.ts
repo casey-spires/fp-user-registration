@@ -1,6 +1,6 @@
 import {iso, Newtype} from "newtype-ts"; 
 import {PositiveInteger} from "newtype-ts/lib/PositiveInteger"; 
-
+import * as E from "fp-ts/lib/Either"
 export type UserRegistrationDto = {
     firstName: string,
     lastName: string,
@@ -38,3 +38,7 @@ export type User = {
     gender: Gender,
     region: Region,
 }
+export type FieldsNotEmpty = (e: UserRegistrationDto)
+    => E.Either<string, UserRegistrationDto>;
+export type ValidateAge = FieldsNotEmpty; 
+export type ValidateGender = FieldsNotEmpty; 
